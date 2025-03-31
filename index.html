@@ -91,6 +91,30 @@
         <p>La inteligencia artificial ha evolucionado desde sus inicios en los años 50, pasando de simples algoritmos a sistemas capaces de aprender por sí mismos. Hoy en día, tecnologías como el <strong>aprendizaje profundo</strong> y el <strong>procesamiento de lenguaje natural</strong> están revolucionando industrias enteras, desde la medicina hasta la automoción. ¡Descubre cómo hemos llegado hasta aquí!</p>
         <button onclick="toggleTheme()">🌙 Cambiar a Modo Oscuro</button>
     </div>
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            
+            // Actualizar texto del botón
+            const btn = document.querySelector('button');
+            btn.textContent = body.classList.contains('dark-mode') 
+                ? "☀️ Cambiar a Modo Claro" 
+                : "🌙 Cambiar a Modo Oscuro";
+
+            // Guardar preferencia
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+        }
+
+        // Cargar tema guardado
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                document.querySelector('button').textContent = "☀️ Cambiar a Modo Claro";
+            }
+        });
+    </script>
 
 
 </body>
